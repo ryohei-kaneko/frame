@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nav Samples — FRAME</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:    #fff;
+  --ink:   #111;
+  --muted: rgba(17,17,17,0.4);
+  --faint: rgba(17,17,17,0.08);
+}
+body {
+  font-family: 'DM Sans', 'Noto Sans JP', system-ui, sans-serif;
+  background: #f5f5f3;
+  color: var(--ink);
+  padding: 48px 40px;
+}
+a { text-decoration: none; color: inherit; }
+
+h1 {
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--bg);
+  padding: 40px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card-label {
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.brand {
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* ── A: 現状（ベースライン） ── */
+.nav-a { display: flex; flex-direction: column; }
+.nav-a a {
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  padding: 9px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+  width: fit-content;
+}
+.nav-a a:hover,
+.nav-a a.on { border-bottom-color: var(--ink); }
+
+/* ── B: 大きめ + 左バー ── */
+.nav-b { display: flex; flex-direction: column; gap: 2px; }
+.nav-b a {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  padding: 6px 0 6px 14px;
+  border-left: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-b a:hover { color: var(--ink); }
+.nav-b a.on { color: var(--ink); border-left-color: var(--ink); }
+
+/* ── C: 番号付き ── */
+.nav-c { display: flex; flex-direction: column; gap: 0; }
+.nav-c a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 8px 0;
+  transition: color 0.2s;
+}
+.nav-c a .num {
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+.nav-c a:hover,
+.nav-c a.on { color: var(--ink); }
+.nav-c a.on { font-weight: 400; }
+
+/* ── D: 大文字 + 細ライン下 ── */
+.nav-d { display: flex; flex-direction: column; gap: 0; }
+.nav-d a {
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 0;
+  position: relative;
+  width: fit-content;
+  transition: color 0.25s;
+}
+.nav-d a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 8px;
+  width: 0; height: 1px;
+  background: var(--ink);
+  transition: width 0.25s ease;
+}
+.nav-d a:hover { color: var(--ink); }
+.nav-d a:hover::after { width: 100%; }
+.nav-d a.on { color: var(--ink); }
+.nav-d a.on::after { width: 100%; }
+
+/* ── E: 大きく / フェードイン ── */
+.nav-e { display: flex; flex-direction: column; gap: 0; }
+.nav-e a {
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: -0.01em;
+  color: var(--faint);
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+.nav-e a:hover { color: rgba(17,17,17,0.45); }
+.nav-e a.on { color: var(--ink); }
+
+/* ── F: 背景ハイライト ── */
+.nav-f { display: flex; flex-direction: column; gap: 3px; }
+.nav-f a {
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 7px 10px;
+  transition: background 0.18s, color 0.18s;
+}
+.nav-f a:hover { background: var(--faint); color: var(--ink); }
+.nav-f a.on { background: var(--ink); color: var(--bg); }
+
+/* ── G: スラッシュ区切り横並び ── */
+.nav-g {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.nav-g .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.nav-g a {
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 4px 10px 4px 0;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-g a:not(:last-child)::after {
+  content: '/';
+  position: absolute;
+  right: 2px;
+  color: var(--faint);
+}
+.nav-g a:hover,
+.nav-g a.on { color: var(--ink); }
+.nav-g a.on { font-weight: 400; }
+
+/* ── H: 縦ドット ── */
+.nav-h { display: flex; flex-direction: column; gap: 0; }
+.nav-h a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 8px 0;
+  transition: color 0.2s;
+}
+.nav-h a .dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--muted);
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.nav-h a:hover { color: var(--ink); }
+.nav-h a:hover .dot { border-color: var(--ink); }
+.nav-h a.on { color: var(--ink); }
+.nav-h a.on .dot { background: var(--ink); border-color: var(--ink); }
+
+/* ── E+F: 大きく / 非選択フェード + 選択は背景反転 ── */
+.nav-ef { display: flex; flex-direction: column; gap: 2px; }
+.nav-ef a {
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: -0.01em;
+  color: rgba(17,17,17,0.12);
+  padding: 3px 10px 3px 8px;
+  transition: color 0.2s, background 0.2s;
+  width: fit-content;
+}
+.nav-ef a:hover { color: rgba(17,17,17,0.45); background: var(--faint); }
+.nav-ef a.on { background: var(--ink); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<h1>Nav Patterns — FRAME</h1>
+
+<div class="grid">
+
+  <!-- E+F -->
+  <div class="card" style="outline: 2px solid #111;">
+    <div class="card-label">E + F — 大きく / 背景反転（候補）</div>
+    <span class="brand">Frame</span>
+    <nav class="nav-ef">
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+
+
+  <!-- A -->
+  <div class="card">
+    <div class="card-label">A — 現状</div>
+    <span class="brand">Frame</span>
+    <nav class="nav-a">
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+  <!-- B -->
+  <div class="card">
+    <div class="card-label">B — 左バー</div>
+    <span class="brand">Frame</span>
+    <nav class="nav-b">
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+  <!-- C -->
+  <div class="card">
+    <div class="card-label">C — 番号付き</div>
+    <span class="brand">Frame</span>
+    <nav class="nav-c">
+      <a href="#" class="on"><span class="num">01</span>Work</a>
+      <a href="#"><span class="num">02</span>About</a>
+      <a href="#"><span class="num">03</span>Contact</a>
+    </nav>
+  </div>
+
+  <!-- D -->
+  <div class="card">
+    <div class="card-label">D — 大文字 + ラインアニメ</div>
+    <span class="brand">Frame</span>
+    <nav class="nav-d">
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+  <!-- E -->
+  <div class="card">
+    <div class="card-label">E — 大きく / 非選択はフェード</div>
+    <span class="brand">Frame</span>
+    <nav class="nav-e">
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+  <!-- F -->
+  <div class="card">
+    <div class="card-label">F — 背景反転</div>
+    <span class="brand">Frame</span>
+    <nav class="nav-f">
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+  <!-- G -->
+  <div class="card">
+    <div class="card-label">G — スラッシュ区切り</div>
+    <span class="brand">Frame</span>
+    <nav class="nav-g">
+      <div class="links">
+        <a href="#" class="on">Work</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- H -->
+  <div class="card">
+    <div class="card-label">H — ドットインジケーター</div>
+    <span class="brand">Frame</span>
+    <nav class="nav-h">
+      <a href="#" class="on"><span class="dot"></span>Work</a>
+      <a href="#"><span class="dot"></span>About</a>
+      <a href="#"><span class="dot"></span>Contact</a>
+    </nav>
+  </div>
+
+</div>
+</body>
+</html>

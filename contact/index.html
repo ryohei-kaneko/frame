@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — FRAME</title>
+<meta name="description" content="FRAME へのお問い合わせ・お仕事のご依頼はこちらから。/ Enquiries and project requests for FRAME.">
+<link rel="canonical" href="https://frame.com/contact/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FRAME">
+<meta property="og:title" content="Contact — FRAME">
+<meta property="og:description" content="Enquiries and project requests for FRAME.">
+<meta property="og:url" content="https://frame.com/contact/">
+<meta property="og:image" content="https://frame.com/images/ogp.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<aside class="sidebar">
+  <a href="../" class="brand">Frame</a>
+  <button class="hamburger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="main-nav">
+    <a href="../">Work</a>
+    <a href="../about/">About</a>
+    <a href="../contact/" class="is-current">Contact</a>
+  </nav>
+
+  <div class="sidebar-foot">
+    <!-- SNS 非表示中 — 開始する際はこのコメントを外してください
+    <div class="social-links">
+      <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4.5"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+          <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+    -->
+    <p class="copy">© FRAME</p>
+  </div>
+</aside>
+
+<main class="main-content">
+
+  <p class="page-label">Contact</p>
+
+  <div class="contact-lead">
+    <p>For project enquiries, please fill in the form below.</p>
+    <p class="ja">お仕事のご依頼・ご相談はフォームよりお気軽にどうぞ。</p>
+  </div>
+
+  <!--
+    REPLACE: action の YOUR_FORM_ID を Formspree のフォーム ID に変更してください。
+    Formspree (https://formspree.io) でフォームを作成すると
+    「https://formspree.io/f/xxxxxxxx」のような URL が発行されます。
+  -->
+  <form
+    class="contact-form"
+    action="https://formspree.io/f/YOUR_FORM_ID"
+    method="POST"
+  >
+    <!-- スパム対策ハニーポット（非表示） -->
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="name">Name / お名前 <span aria-hidden="true">*</span></label>
+        <input type="text" id="name" name="name" autocomplete="name" required>
+      </div>
+      <div class="form-field">
+        <label for="company">Company / 会社名</label>
+        <input type="text" id="company" name="company" autocomplete="organization">
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email / メールアドレス <span aria-hidden="true">*</span></label>
+      <input type="email" id="email" name="email" autocomplete="email" required>
+    </div>
+
+    <div class="form-field">
+      <label for="service">Service / ご依頼の種類 <span aria-hidden="true">*</span></label>
+      <div class="select-wrap">
+        <select id="service" name="service" required>
+          <option value="" disabled selected>選択してください / Please select</option>
+          <option value="photo">スチール撮影・編集 / Still Photography</option>
+          <option value="video">動画撮影・編集 / Video Production</option>
+          <option value="web">LP・ウェブサイト制作 / LP & Website</option>
+          <option value="youtube">YouTube制作 / YouTube</option>
+          <option value="other">その他 / Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="message">Message / メッセージ <span aria-hidden="true">*</span></label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+    </div>
+
+    <button type="submit" class="form-submit">Send</button>
+
+  </form>
+
+</main>
+
+<script src="../main.js"></script>
+</body>
+</html>
