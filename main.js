@@ -83,6 +83,18 @@ if (filterBtns.length) {
         const match = filter === 'all' || card.dataset.category === filter;
         card.classList.toggle('is-hidden', !match);
       });
+
+      // フィルター後、画面内に入ったカードをすぐ表示
+      requestAnimationFrame(() => {
+        workCards.forEach(card => {
+          if (!card.classList.contains('is-hidden') && !card.classList.contains('is-visible')) {
+            const rect = card.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+              card.classList.add('is-visible');
+            }
+          }
+        });
+      });
     });
   });
 }
