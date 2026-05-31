@@ -1,17 +1,71 @@
-// ── Hamburger menu ──
+// ── Hamburger menu (Pattern C: slide panel) ──
 const hamburger = document.querySelector('.hamburger');
 if (hamburger) {
-  hamburger.addEventListener('click', () => {
-    document.body.classList.toggle('menu-open');
-    const isOpen = document.body.classList.contains('menu-open');
-    hamburger.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
-  });
+  const scrim = document.createElement('div');
+  scrim.className = 'menu-scrim';
+  document.body.appendChild(scrim);
 
-  document.querySelectorAll('.main-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.body.classList.remove('menu-open');
-    });
+  const panel = document.createElement('div');
+  panel.className = 'menu-panel';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'menu-panel-close';
+  closeBtn.setAttribute('aria-label', 'メニューを閉じる');
+  panel.appendChild(closeBtn);
+
+  const nav = document.querySelector('.main-nav');
+  if (nav) panel.appendChild(nav.cloneNode(true));
+
+  document.body.appendChild(panel);
+
+  function openMenu() {
+    document.body.classList.add('menu-open');
+    hamburger.setAttribute('aria-label', 'メニューを閉じる');
+  }
+  function closeMenu() {
+    document.body.classList.remove('menu-open');
+    hamburger.setAttribute('aria-label', 'メニューを開く');
+  }
+
+  hamburger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  scrim.addEventListener('click', closeMenu);
+}
+
+// ── Video toggle ──
+document.querySelectorAll('.video-toggle').forEach(btn => {
+  const video = btn.closest('.work-thumb').querySelector('video');
+  const iconPause = btn.querySelector('.icon-pause');
+  const iconPlay  = btn.querySelector('.icon-play');
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (video.paused) {
+      video.play();
+      iconPause.style.display = '';
+      iconPlay.style.display  = 'none';
+      btn.setAttribute('aria-label', '一時停止');
+    } else {
+      video.pause();
+      iconPause.style.display = 'none';
+      iconPlay.style.display  = '';
+      btn.setAttribute('aria-label', '再生');
+    }
   });
+});
+
+// ── Effect B: scroll card reveal ──
+const revealCards = document.querySelectorAll('.work-card');
+if (revealCards.length) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('is-visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealCards.forEach(card => observer.observe(card));
 }
 
 // ── Work filter ──

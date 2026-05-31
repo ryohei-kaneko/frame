@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Samples — FRAME</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Grotesk:wght@300;400;500&family=Raleway:wght@200;300;400&family=Outfit:wght@200;300;400&family=Spectral:ital,wght@0,300;0,400;1,300&family=Syne:wght@400;500;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:    #fff;
+  --ink:   #111;
+  --muted: rgba(17,17,17,0.38);
+  --faint: rgba(17,17,17,0.08);
+}
+body {
+  background: #f0efed;
+  color: var(--ink);
+  padding: 48px 40px;
+}
+a { text-decoration: none; color: inherit; }
+
+h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+.note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 40px;
+  letter-spacing: 0.03em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--bg);
+  padding: 40px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.card-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── A: 現状 DM Sans ── */
+.f-a .brand { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 300; letter-spacing: 0.48em; text-transform: uppercase; }
+.f-a nav { display: flex; flex-direction: column; gap: 2px; }
+.f-a nav a { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 300; letter-spacing: 0.02em; color: var(--muted); padding: 5px 0 5px 13px; border-left: 1px solid transparent; }
+.f-a nav a.on { color: var(--ink); border-left-color: var(--ink); }
+.f-a .body { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 300; line-height: 1.85; letter-spacing: 0.03em; color: var(--muted); }
+
+/* ── B: Cormorant Garamond（セリフ / エディトリアル） ── */
+.f-b .brand { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.42em; text-transform: uppercase; }
+.f-b nav { display: flex; flex-direction: column; gap: 2px; }
+.f-b nav a { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; letter-spacing: 0.04em; color: var(--muted); padding: 4px 0 4px 13px; border-left: 1px solid transparent; }
+.f-b nav a.on { color: var(--ink); border-left-color: var(--ink); }
+.f-b .body { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; font-weight: 300; line-height: 1.95; letter-spacing: 0.03em; color: var(--muted); }
+
+/* ── C: Spectral（セリフ / 文芸的） ── */
+.f-c .brand { font-family: 'Spectral', serif; font-size: 0.78rem; font-weight: 300; letter-spacing: 0.38em; text-transform: uppercase; }
+.f-c nav { display: flex; flex-direction: column; gap: 2px; }
+.f-c nav a { font-family: 'Spectral', serif; font-size: 1.05rem; font-weight: 300; letter-spacing: 0.02em; color: var(--muted); padding: 4px 0 4px 13px; border-left: 1px solid transparent; }
+.f-c nav a.on { color: var(--ink); border-left-color: var(--ink); }
+.f-c .body { font-family: 'Spectral', serif; font-size: 0.84rem; font-weight: 300; line-height: 1.95; letter-spacing: 0.03em; color: var(--muted); }
+
+/* ── D: Space Grotesk（テック / 個性派サンズ） ── */
+.f-d .brand { font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem; font-weight: 300; letter-spacing: 0.44em; text-transform: uppercase; }
+.f-d nav { display: flex; flex-direction: column; gap: 2px; }
+.f-d nav a { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 300; letter-spacing: 0.01em; color: var(--muted); padding: 5px 0 5px 13px; border-left: 1px solid transparent; }
+.f-d nav a.on { color: var(--ink); border-left-color: var(--ink); }
+.f-d .body { font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 300; line-height: 1.82; letter-spacing: 0.02em; color: var(--muted); }
+
+/* ── E: Raleway（クラシック / ジオメトリック） ── */
+.f-e .brand { font-family: 'Raleway', sans-serif; font-size: 0.68rem; font-weight: 200; letter-spacing: 0.52em; text-transform: uppercase; }
+.f-e nav { display: flex; flex-direction: column; gap: 2px; }
+.f-e nav a { font-family: 'Raleway', sans-serif; font-size: 0.95rem; font-weight: 300; letter-spacing: 0.06em; color: var(--muted); padding: 5px 0 5px 13px; border-left: 1px solid transparent; }
+.f-e nav a.on { color: var(--ink); border-left-color: var(--ink); }
+.f-e .body { font-family: 'Raleway', sans-serif; font-size: 0.78rem; font-weight: 300; line-height: 1.85; letter-spacing: 0.04em; color: var(--muted); }
+
+/* ── F: Syne（モダン / 力強い） ── */
+.f-f .brand { font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.38em; text-transform: uppercase; }
+.f-f nav { display: flex; flex-direction: column; gap: 2px; }
+.f-f nav a { font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 400; letter-spacing: 0.02em; color: var(--muted); padding: 5px 0 5px 13px; border-left: 1px solid transparent; }
+.f-f nav a.on { color: var(--ink); border-left-color: var(--ink); }
+.f-f .body { font-family: 'Syne', sans-serif; font-size: 0.76rem; font-weight: 400; line-height: 1.82; letter-spacing: 0.02em; color: var(--muted); }
+
+/* ── G: Outfit（クリーン / モダン） ── */
+.f-g .brand { font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 200; letter-spacing: 0.46em; text-transform: uppercase; }
+.f-g nav { display: flex; flex-direction: column; gap: 2px; }
+.f-g nav a { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 300; letter-spacing: 0.02em; color: var(--muted); padding: 5px 0 5px 13px; border-left: 1px solid transparent; }
+.f-g nav a.on { color: var(--ink); border-left-color: var(--ink); }
+.f-g .body { font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 300; line-height: 1.85; letter-spacing: 0.02em; color: var(--muted); }
+
+/* ── H: Cormorant(ブランド) + DM Sans(本文) のミックス ── */
+.f-h .brand { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.42em; text-transform: uppercase; }
+.f-h nav { display: flex; flex-direction: column; gap: 2px; }
+.f-h nav a { font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 300; letter-spacing: 0.04em; color: var(--muted); padding: 5px 0 5px 13px; border-left: 1px solid transparent; }
+.f-h nav a.on { color: var(--ink); border-left-color: var(--ink); }
+.f-h .body { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 300; line-height: 1.85; letter-spacing: 0.03em; color: var(--muted); }
+.f-h .serif-accent { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.04em; line-height: 1.2; margin-bottom: -8px; }
+</style>
+</head>
+<body>
+
+<h1>Font Samples — FRAME</h1>
+<p class="note">yamacara は Josefin Sans。それと印象が異なるものを中心に選んでいます。</p>
+
+<div class="grid">
+
+  <div class="card f-a">
+    <div class="card-label">A — DM Sans（現状）</div>
+    <span class="brand">Frame</span>
+    <nav>
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="body">スチール撮影・動画制作・<br>LP・ウェブサイト制作</p>
+  </div>
+
+  <div class="card f-b">
+    <div class="card-label">B — Cormorant Garamond（セリフ / エディトリアル）</div>
+    <span class="brand">Frame</span>
+    <nav>
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="body">スチール撮影・動画制作・<br>LP・ウェブサイト制作</p>
+  </div>
+
+  <div class="card f-c">
+    <div class="card-label">C — Spectral（セリフ / 文芸的）</div>
+    <span class="brand">Frame</span>
+    <nav>
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="body">スチール撮影・動画制作・<br>LP・ウェブサイト制作</p>
+  </div>
+
+  <div class="card f-d">
+    <div class="card-label">D — Space Grotesk（テック / 個性派）</div>
+    <span class="brand">Frame</span>
+    <nav>
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="body">スチール撮影・動画制作・<br>LP・ウェブサイト制作</p>
+  </div>
+
+  <div class="card f-e">
+    <div class="card-label">E — Raleway（クラシック / ジオメトリック）</div>
+    <span class="brand">Frame</span>
+    <nav>
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="body">スチール撮影・動画制作・<br>LP・ウェブサイト制作</p>
+  </div>
+
+  <div class="card f-f">
+    <div class="card-label">F — Syne（モダン / 力強め）</div>
+    <span class="brand">Frame</span>
+    <nav>
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="body">スチール撮影・動画制作・<br>LP・ウェブサイト制作</p>
+  </div>
+
+  <div class="card f-g">
+    <div class="card-label">G — Outfit（クリーン / モダン）</div>
+    <span class="brand">Frame</span>
+    <nav>
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="body">スチール撮影・動画制作・<br>LP・ウェブサイト制作</p>
+  </div>
+
+  <div class="card f-h">
+    <div class="card-label">H — Cormorant（ブランド名）× DM Sans（テキスト）ミックス</div>
+    <span class="brand">Frame</span>
+    <nav>
+      <a href="#" class="on">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="body">スチール撮影・動画制作・<br>LP・ウェブサイト制作</p>
+  </div>
+
+</div>
+</body>
+</html>

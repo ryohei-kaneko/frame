@@ -19,7 +19,7 @@
 <meta name="twitter:description" content="FRAME — Photography, Video, Web & LP, YouTube production unit.">
 <meta name="twitter:image" content="https://frame.com/images/ogp.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">
 {
@@ -36,7 +36,7 @@
 <aside class="sidebar">
   <a href="./" class="brand">Frame</a>
   <button class="hamburger" aria-label="メニューを開く">
-    <span></span><span></span><span></span>
+    <span></span><span></span>
   </button>
 
   <nav class="main-nav">
@@ -63,7 +63,7 @@
       </a>
     </div>
     -->
-    <p class="copy">© FRAME</p>
+    <p class="copy">© FRAME All Rights Reserved.</p>
   </div>
 </aside>
 
@@ -74,7 +74,6 @@
     <button class="filter-btn" data-filter="photo">Photo</button>
     <button class="filter-btn" data-filter="video">Video</button>
     <button class="filter-btn" data-filter="web">Web & LP</button>
-    <button class="filter-btn" data-filter="youtube">YouTube</button>
   </div>
 
   <div class="work-grid" id="workGrid">
@@ -84,17 +83,22 @@
          <img src="images/ファイル名.jpg" alt="プロジェクト名">
          を追加してください。work-title も書き換えてください。
     -->
-    <article class="work-card" data-category="photo">
-      <div class="work-thumb"></div>
+    <a class="work-card work-card--nohover" data-category="photo" href="https://active-kojima.com/cpl/collection/2026/" target="_blank" rel="noopener">
+      <div class="work-thumb work-thumb-duo">
+        <img src="images/cpl_26ss_01.jpg" alt="CPL 2026 COLLECTION">
+        <img src="images/cpl_26ss_02.jpg" alt="CPL 2026 COLLECTION">
+      </div>
       <span class="work-cat">Photo</span>
-      <h2 class="work-title">Project Title</h2>
-    </article>
+      <h2 class="work-title">CPL 2026 COLLECTION</h2>
+    </a>
 
-    <article class="work-card" data-category="photo">
-      <div class="work-thumb"></div>
+    <a class="work-card work-card--nohover" data-category="photo" href="https://androbu-rental.com/" target="_blank" rel="noopener">
+      <div class="work-thumb">
+        <img src="images/androbu02.jpg" alt="&amp;Robu.">
+      </div>
       <span class="work-cat">Photo</span>
-      <h2 class="work-title">Project Title</h2>
-    </article>
+      <h2 class="work-title">&amp;Robu.</h2>
+    </a>
 
     <article class="work-card" data-category="photo">
       <div class="work-thumb"></div>
@@ -103,11 +107,30 @@
     </article>
 
     <!-- ── Video ─────────────────────────────────────────────── -->
-    <article class="work-card" data-category="video">
-      <div class="work-thumb"></div>
+    <a class="work-card work-card--nohover" data-category="video" href="https://www.youtube.com/@INTEREPRECHANNEL" target="_blank" rel="noopener">
+      <div class="work-thumb work-thumb--contain" style="background:#111">
+        <img src="images/interepre.jpg" alt="INTEREPRE">
+      </div>
       <span class="work-cat">Video</span>
-      <h2 class="work-title">Project Title</h2>
-    </article>
+      <h2 class="work-title">株式会社INTEREPRE</h2>
+    </a>
+
+    <a class="work-card work-card--nohover" data-category="video" href="https://norokka.com/" target="_blank" rel="noopener">
+      <div class="work-thumb">
+        <video src="videos/norokka.mp4" autoplay muted loop playsinline></video>
+        <button class="video-toggle" aria-label="一時停止">
+          <svg class="icon-pause" width="10" height="12" viewBox="0 0 10 12" fill="currentColor">
+            <rect x="0" y="0" width="3" height="12"/>
+            <rect x="7" y="0" width="3" height="12"/>
+          </svg>
+          <svg class="icon-play" width="10" height="12" viewBox="0 0 10 12" fill="currentColor" style="display:none">
+            <polygon points="0,0 10,6 0,12"/>
+          </svg>
+        </button>
+      </div>
+      <span class="work-cat">Video</span>
+      <h2 class="work-title">norokka</h2>
+    </a>
 
     <article class="work-card" data-category="video">
       <div class="work-thumb"></div>
@@ -122,6 +145,14 @@
     </article>
 
     <!-- ── Web & LP ──────────────────────────────────────────── -->
+    <a class="work-card work-card--nohover" data-category="web" href="https://yamacara.com/" target="_blank" rel="noopener">
+      <div class="work-thumb work-thumb--contain">
+        <img src="images/yamacara_web.jpg" alt="YAMACARA">
+      </div>
+      <span class="work-cat">Web & LP</span>
+      <h2 class="work-title">YAMACARA</h2>
+    </a>
+
     <article class="work-card" data-category="web">
       <div class="work-thumb"></div>
       <span class="work-cat">Web & LP</span>
@@ -131,19 +162,6 @@
     <article class="work-card" data-category="web">
       <div class="work-thumb"></div>
       <span class="work-cat">Web & LP</span>
-      <h2 class="work-title">Project Title</h2>
-    </article>
-
-    <!-- ── YouTube ───────────────────────────────────────────── -->
-    <article class="work-card" data-category="youtube">
-      <div class="work-thumb"></div>
-      <span class="work-cat">YouTube</span>
-      <h2 class="work-title">Project Title</h2>
-    </article>
-
-    <article class="work-card" data-category="youtube">
-      <div class="work-thumb"></div>
-      <span class="work-cat">YouTube</span>
       <h2 class="work-title">Project Title</h2>
     </article>
 

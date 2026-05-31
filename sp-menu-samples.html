@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SP Menu Samples — FRAME</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:    #fff;
+  --ink:   #111;
+  --muted: rgba(17,17,17,0.38);
+  --faint: rgba(17,17,17,0.08);
+}
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #efefed;
+  padding: 48px 40px 100px;
+  color: var(--ink);
+}
+h1 {
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+/* ── スマホフレーム ── */
+.phone {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.phone-label {
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.phone-frame {
+  width: 280px;
+  height: 480px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.1);
+}
+
+/* ── ヘッダー共通 ── */
+.sp-header {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--faint);
+}
+.sp-brand {
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+}
+
+/* ── ダミーコンテンツ ── */
+.sp-content {
+  position: absolute;
+  top: 52px; left: 0; right: 0; bottom: 0;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-content: start;
+}
+.sp-card { background: #e8e8e8; aspect-ratio: 3/2; }
+
+/* ────────────────────────────────────────
+   A: 現状（3本線→X / フルスクリーン白）
+──────────────────────────────────────── */
+.pa-btn {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.pa-btn span {
+  display: block; width: 18px; height: 1px; background: var(--ink);
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+.pa-overlay {
+  position: absolute; inset: 0; z-index: 20;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  padding: 0 20px 32px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.pa-overlay-head {
+  height: 52px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+}
+.pa-nav { display: flex; flex-direction: column; gap: 2px; margin-top: 32px; }
+.pa-nav a {
+  font-size: 0.88rem; font-weight: 300; letter-spacing: 0.02em;
+  color: var(--muted); padding: 7px 0 7px 13px;
+  border-left: 1px solid transparent;
+  text-decoration: none; display: block;
+}
+.pa-nav a.on { color: var(--ink); border-left-color: var(--ink); }
+/* open */
+.phone[data-open="a"] .pa-overlay { opacity: 1; pointer-events: auto; }
+.phone[data-open="a"] .pa-btn span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.phone[data-open="a"] .pa-btn span:nth-child(2) { opacity: 0; }
+.phone[data-open="a"] .pa-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ────────────────────────────────────────
+   B: MENU / CLOSE テキスト + 大テキスト中央
+──────────────────────────────────────── */
+.pb-btn {
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-size: 0.58rem; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink);
+  padding: 4px 0;
+}
+.pb-overlay {
+  position: absolute; inset: 0; z-index: 20;
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.pb-close {
+  position: absolute; top: 14px; right: 20px;
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-size: 0.58rem; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+}
+.pb-nav { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.pb-nav a {
+  font-size: 1.8rem; font-weight: 200; letter-spacing: -0.01em;
+  color: rgba(17,17,17,0.15); text-decoration: none;
+  transition: color 0.2s;
+}
+.pb-nav a.on,
+.pb-nav a:hover { color: var(--ink); }
+.phone[data-open="b"] .pb-overlay { opacity: 1; pointer-events: auto; }
+
+/* ────────────────────────────────────────
+   C: 2本線 + 右からスライド（70%幅）
+──────────────────────────────────────── */
+.pc-btn {
+  display: flex; flex-direction: column; gap: 6px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.pc-btn span {
+  display: block; height: 1px; background: var(--ink);
+  transition: width 0.25s ease;
+}
+.pc-btn span:nth-child(1) { width: 18px; }
+.pc-btn span:nth-child(2) { width: 12px; }
+.pc-scrim {
+  position: absolute; inset: 0; z-index: 19;
+  background: rgba(17,17,17,0);
+  pointer-events: none;
+  transition: background 0.35s ease;
+}
+.pc-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 72%; z-index: 20;
+  background: var(--bg);
+  padding: 52px 24px 32px;
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -4px 0 24px rgba(0,0,0,0.08);
+}
+.pc-close {
+  position: absolute; top: 14px; right: 20px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+  display: flex; flex-direction: column; gap: 0; align-items: center; justify-content: center;
+}
+.pc-close::before, .pc-close::after {
+  content: ''; display: block; width: 16px; height: 1px; background: var(--ink);
+}
+.pc-close::before { transform: rotate(45deg) translateY(0.5px); }
+.pc-close::after  { transform: rotate(-45deg) translateY(-0.5px); }
+.pc-nav { display: flex; flex-direction: column; gap: 2px; margin-top: 40px; }
+.pc-nav a {
+  font-size: 0.92rem; font-weight: 300; letter-spacing: 0.02em;
+  color: var(--muted); padding: 7px 0 7px 13px;
+  border-left: 1px solid transparent; text-decoration: none; display: block;
+}
+.pc-nav a.on { color: var(--ink); border-left-color: var(--ink); }
+/* open */
+.phone[data-open="c"] .pc-scrim { background: rgba(17,17,17,0.18); pointer-events: auto; }
+.phone[data-open="c"] .pc-panel { transform: translateX(0); }
+.phone[data-open="c"] .pc-btn span:nth-child(1) { width: 18px; }
+.phone[data-open="c"] .pc-btn span:nth-child(2) { width: 18px; }
+
+/* ────────────────────────────────────────
+   D: 背景暗転 + 中央フロートパネル
+──────────────────────────────────────── */
+.pd-btn {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.pd-btn span {
+  display: block; width: 18px; height: 1px; background: var(--ink);
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+.pd-scrim {
+  position: absolute; inset: 0; z-index: 19;
+  background: rgba(17,17,17,0);
+  pointer-events: none;
+  transition: background 0.35s ease;
+}
+.pd-panel {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -46%) scale(0.96);
+  z-index: 20;
+  background: var(--bg);
+  width: 78%;
+  padding: 36px 28px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.pd-nav { display: flex; flex-direction: column; gap: 2px; }
+.pd-nav a {
+  font-size: 0.88rem; font-weight: 300; letter-spacing: 0.02em;
+  color: var(--muted); padding: 8px 0 8px 13px;
+  border-left: 1px solid transparent; text-decoration: none; display: block;
+}
+.pd-nav a.on { color: var(--ink); border-left-color: var(--ink); }
+.pd-close {
+  display: block; margin-top: 28px;
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-size: 0.56rem; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+}
+/* open */
+.phone[data-open="d"] .pd-scrim { background: rgba(17,17,17,0.45); pointer-events: auto; }
+.phone[data-open="d"] .pd-panel {
+  opacity: 1; pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.phone[data-open="d"] .pd-btn span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.phone[data-open="d"] .pd-btn span:nth-child(2) { opacity: 0; }
+.phone[data-open="d"] .pd-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ────────────────────────────────────────
+   E: 下からスライドアップ + 番号付き大テキスト
+──────────────────────────────────────── */
+.pe-btn {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.pe-btn span {
+  display: block; width: 18px; height: 1px; background: var(--ink);
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+.pe-panel {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 70%;
+  z-index: 20;
+  background: var(--bg);
+  padding: 36px 24px 32px;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.pe-nav { display: flex; flex-direction: column; gap: 6px; }
+.pe-nav a {
+  display: flex; align-items: baseline; gap: 10px;
+  text-decoration: none;
+  font-size: 1.5rem; font-weight: 200; color: rgba(17,17,17,0.14);
+  transition: color 0.2s;
+}
+.pe-nav a .num { font-size: 0.56rem; font-weight: 300; letter-spacing: 0.1em; color: var(--muted); }
+.pe-nav a.on,
+.pe-nav a:hover { color: var(--ink); }
+.pe-close {
+  display: block; margin-top: 28px;
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-size: 0.56rem; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  padding: 0;
+}
+/* open */
+.phone[data-open="e"] .pe-panel { transform: translateY(0); }
+.phone[data-open="e"] .pe-btn span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.phone[data-open="e"] .pe-btn span:nth-child(2) { opacity: 0; }
+.phone[data-open="e"] .pe-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+</style>
+</head>
+<body>
+
+<h1>SP Menu Samples — FRAME</h1>
+
+<div class="grid">
+
+  <!-- A -->
+  <div class="phone" id="phone-a">
+    <p class="phone-label">A — 現状（3本線 / フルスクリーン）</p>
+    <div class="phone-frame">
+      <div class="sp-header">
+        <span class="sp-brand">Frame</span>
+        <button class="pa-btn" onclick="toggle('a')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="sp-content">
+        <div class="sp-card"></div><div class="sp-card"></div>
+        <div class="sp-card"></div><div class="sp-card"></div>
+      </div>
+      <div class="pa-overlay">
+        <div class="pa-overlay-head">
+          <span class="sp-brand">Frame</span>
+          <button class="pa-btn" onclick="toggle('a')">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+        <nav class="pa-nav">
+          <a href="#" class="on">Work</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="phone" id="phone-b">
+    <p class="phone-label">B — MENU テキスト / 大テキスト中央揃え</p>
+    <div class="phone-frame">
+      <div class="sp-header">
+        <span class="sp-brand">Frame</span>
+        <button class="pb-btn" onclick="toggle('b')">Menu</button>
+      </div>
+      <div class="sp-content">
+        <div class="sp-card"></div><div class="sp-card"></div>
+        <div class="sp-card"></div><div class="sp-card"></div>
+      </div>
+      <div class="pb-overlay">
+        <button class="pb-close" onclick="toggle('b')">Close</button>
+        <nav class="pb-nav">
+          <a href="#" class="on">Work</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="phone" id="phone-c">
+    <p class="phone-label">C — 2本線 / 右からスライド</p>
+    <div class="phone-frame">
+      <div class="sp-header">
+        <span class="sp-brand">Frame</span>
+        <button class="pc-btn" onclick="toggle('c')">
+          <span></span><span></span>
+        </button>
+      </div>
+      <div class="sp-content">
+        <div class="sp-card"></div><div class="sp-card"></div>
+        <div class="sp-card"></div><div class="sp-card"></div>
+      </div>
+      <div class="pc-scrim" onclick="toggle('c')"></div>
+      <div class="pc-panel">
+        <button class="pc-close" onclick="toggle('c')"></button>
+        <nav class="pc-nav">
+          <a href="#" class="on">Work</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="phone" id="phone-d">
+    <p class="phone-label">D — 背景暗転 / 中央フロート</p>
+    <div class="phone-frame">
+      <div class="sp-header">
+        <span class="sp-brand">Frame</span>
+        <button class="pd-btn" onclick="toggle('d')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="sp-content">
+        <div class="sp-card"></div><div class="sp-card"></div>
+        <div class="sp-card"></div><div class="sp-card"></div>
+      </div>
+      <div class="pd-scrim" onclick="toggle('d')"></div>
+      <div class="pd-panel">
+        <nav class="pd-nav">
+          <a href="#" class="on">Work</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+        <button class="pd-close" onclick="toggle('d')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="phone" id="phone-e">
+    <p class="phone-label">E — 番号付き大テキスト / 下からスライド</p>
+    <div class="phone-frame">
+      <div class="sp-header">
+        <span class="sp-brand">Frame</span>
+        <button class="pe-btn" onclick="toggle('e')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="sp-content">
+        <div class="sp-card"></div><div class="sp-card"></div>
+        <div class="sp-card"></div><div class="sp-card"></div>
+      </div>
+      <div class="pe-panel">
+        <nav class="pe-nav">
+          <a href="#" class="on"><span class="num">01</span>Work</a>
+          <a href="#"><span class="num">02</span>About</a>
+          <a href="#"><span class="num">03</span>Contact</a>
+        </nav>
+        <button class="pe-close" onclick="toggle('e')">Close</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggle(id) {
+  const phone = document.getElementById('phone-' + id);
+  const isOpen = phone.dataset.open === id;
+  document.querySelectorAll('.phone').forEach(p => delete p.dataset.open);
+  if (!isOpen) phone.dataset.open = id;
+}
+</script>
+</body>
+</html>
