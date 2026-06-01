@@ -54,7 +54,7 @@ document.querySelectorAll('.video-toggle').forEach(btn => {
   });
 });
 
-// ── Effect B: scroll card reveal ──
+// ── Effect: card reveal ──
 const revealCards = document.querySelectorAll('.work-card');
 if (revealCards.length) {
   const observer = new IntersectionObserver((entries) => {
@@ -64,7 +64,7 @@ if (revealCards.length) {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
   revealCards.forEach(card => observer.observe(card));
 }
 
